@@ -125,6 +125,8 @@ python3 .github/scripts/figma_requirements_pipeline.py \
 ### Environment
 ```bash
 # Required in .env or environment
+# Get your FIGMA_API_KEY from https://www.figma.com/developers/api#access-tokens
+# Store token in .env file, DO NOT commit to repository
 export FIGMA_API_KEY=<your_figma_api_key_here>
 ```
 
