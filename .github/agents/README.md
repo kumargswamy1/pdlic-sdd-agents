@@ -207,37 +207,25 @@ All Phases: Continuous Validation
 - Creating features, components, or backend services
 - Following established standards and patterns
 - Creating unit tests alongside implementation (test-driven development)
+- Matching UI implementation to screenshot/Figma designs with project theme consistency
 
 **What it does:**
 - Reads implementation plans (TASK-* IDs)
 - Generates production-ready code
 - **Creates unit tests as part of implementation** (not separately)
+- **Matches UI exactly to screenshots/Figma designs** while applying project theme, color palette, and styling
 - Follows tech-stack-specific standards
 - Reuses approved components and libraries
 - Documents code inline with standards
+- Verifies visual fidelity against reference designs
 
-**Unit Test Implementation:**
-- **Frontend unit tests** for components, hooks, services, state management
-- **Backend unit tests** for services, controllers, models, middleware
-- **Test frameworks** (Jest, Vitest, pytest, JUnit, etc.)
-- **Mock data** and fixtures for isolated testing
-- **Coverage targets** (80%+ for business logic, 90%+ for validation)
-- **Verification commands** documented in task description
-
-**Frontend Unit Tests Created:**
-- Component render and event tests
-- Hook tests with state and side effects
-- Service/API client tests with mocking
-- Form validation tests
-- Navigation/routing tests
-- State management tests (reducers, selectors)
-
-**Backend Unit Tests Created:**
-- Service/business logic tests
-- Controller/API endpoint tests
-- Model/ORM tests
-- Middleware tests (auth, validation)
-- Integration tests (database, external services)
+**Visual Implementation Verification:**
+- Colors match project theme palette (no custom hex values contradicting brand)
+- Typography aligns with project type scale (fonts, sizes, weights)
+- Spacing follows project design tokens (padding, margins, gaps)
+- Component styling uses approved project components
+- All states and variants from screenshot are implemented
+- No visual gaps or deviations from reference design
 
 **Reads from:**
 - Plans with TASK-* IDs
@@ -512,6 +500,41 @@ Each phase generates unique trace IDs for linking:
 | Implementation | CODE-* | CODE-001 | Code artifact |
 | Testing | TEST-* | TEST-001 | Unit test case/suite |
 | Documentation | DOC-* | DOC-001 | Documentation artifact |
+
+---
+
+## UI Implementation & Visual Design Fidelity
+
+### Screenshot/Figma Design Matching
+
+**Principle**: UI implementation MUST match the referenced screenshot or Figma design exactly, while applying the project's theme, color palette, and styling standards.
+
+**Screenshot as Binding Acceptance Evidence:**
+- Screenshots linked in specification are not optional inspiration—they define visual acceptance criteria
+- Every visible element, spacing relationship, color, and state in the screenshot must be implemented
+- Visual gaps, silent omissions, or design deviations are implementation failures
+
+**Theme & Styling Consistency:**
+- Colors: Use project color palette and design tokens, not custom hex values that contradict brand
+- Typography: Apply project type scale (fonts, sizes, weights, line heights)
+- Spacing: Follow project design tokens for padding, margins, gaps, and alignment
+- Components: Reuse approved project components; do not create custom variants that conflict with system
+- States: Implement all visual states shown in screenshot (normal, hover, active, disabled, loading, error, empty)
+
+**Implementation Verification Checklist:**
+- ✅ Every control, label, icon matches screenshot exactly
+- ✅ Colors align with project palette
+- ✅ Typography matches project type scale
+- ✅ Spacing and alignment follow design tokens
+- ✅ Component styling uses approved project components
+- ✅ All states and variants from screenshot are present
+- ✅ No custom styling overrides project theme
+- ✅ Visual comparison against PNG at target viewport shows 100% match
+
+**Planning Requirement:**
+- Implementation Planner creates explicit visual fidelity verification tasks
+- Tasks include acceptance criteria: "UI matches referenced screenshot 100%"
+- Verification includes color, typography, spacing, component usage, and theme consistency
 
 ---
 

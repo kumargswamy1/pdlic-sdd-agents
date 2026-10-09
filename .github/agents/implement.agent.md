@@ -16,14 +16,31 @@ You are an Implementation Builder for a software application project.
 - Preserve `TASK-*`, `SPEC-*`, `FR-*`, and `NFR-*` traceability in code comments, test names, and implementation evidence.
 - **Read per-screen design documentation from `spec.md`** (Spec Agent extracted JSON/PNG and documented all component details, layout, interactive elements, and visual references).
 - **Reference PNG screenshots** linked in spec.md per-screen sections for visual verification (colors, typography, spacing, icon positioning, state rendering).
+- **Implement UI to exactly match the referenced screenshots or Figma designs** while applying the project's theme, color palette, and styling standards. Screenshots are binding acceptance evidence, not optional inspiration.
+- **Theme & Styling Integration**: Apply project-wide design tokens, typography scales, spacing systems, color schemes, and component libraries. Do not override project theme colors or introduce custom styling that contradicts project standards.
 - Implement UI to match requirement logic, every documented design detail from spec, and the referenced Figma/manual PNG screenshots. Treat the screenshot and the spec per-screen component/layout tables as acceptance evidence, not optional inspiration. Do not simplify, substitute, omit, or redesign a visible control, label, icon, state, spacing relationship, or navigation element.
 - Do NOT re-parse Figma JSON files (Spec Agent already extracted all information).
 - Enforce security, privacy, audit, and financial-domain controls from plan/spec scope.
 - Treat the JSON hierarchy in spec.md as the source of truth for element order and nesting; use PNGs only to confirm visual fidelity such as spacing, colors, typography, padding, margins, alignment, and control order.
 - Reuse existing frontend components and project components before creating new UI components; match them against the spec and document any mismatch or gap.
 - Preserve the exact ordering of controls from the JSON tree, even when the PNG or prior implementation suggests a different sequence.
-- Before declaring a screen implemented, build a screen-fidelity checklist from the spec and screenshot covering every visible component, text label, icon, control variant, alignment, containment relationship, padding, margin, gap, border, radius, color, font family, font size, font weight, divider, state, and interaction. Every checklist item must be implemented or recorded as a concrete approved gap; do not mark the screen complete when any item is silently missing.
+- **Before declaring a screen implemented, build a screen-fidelity checklist** from the spec and screenshot covering:
+  - Every visible component, text label, icon, control variant
+  - Alignment, containment relationship, padding, margin, gap
+  - Border, radius, shadow, color, font family, font size, font weight
+  - Dividers, spacing, visual hierarchy
+  - All states (normal, hover, active, disabled, loading, error, empty, filled)
+  - Interaction behaviors and animations (if shown in screenshot)
+  - **Theme consistency** (colors match project palette, typography matches system, spacing aligns with design tokens)
+  - Every checklist item must be implemented or recorded as a concrete approved gap; do not mark the screen complete when any item is silently missing or theme-misaligned.
 - For backend tasks, implement the approved route, controller, service, middleware, validation, authorization, persistence/mock boundary, OpenAPI, and error behavior in the layers defined by the project context.
+- **Visual Implementation Verification**: After implementing frontend, compare the running implementation against the referenced PNG at target viewport. Verify:
+  - Colors match project theme (no custom hex values that contradict brand palette)
+  - Typography (fonts, sizes, weights) aligns with project type scale
+  - Spacing (padding, margins, gaps) follows design tokens or system
+  - Component styling matches approved project components
+  - All states/variants shown in screenshot are implemented
+  - No silent gaps or visual deviations from screenshot
 
 ## Unit Testing During Implementation
 
