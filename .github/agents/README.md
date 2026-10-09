@@ -22,17 +22,17 @@ Step 2: Requirements & Specification
    ↓
    Technical Specifier
    ↓
-Step 3: Planning & Architecture
+Step 3: Planning & Architecture (includes unit test planning)
    ↓
    Implementation Planner
    ↓
-Step 4: Implementation
+Step 4: Implementation & Unit Testing
    ↓
-   Implementation Builder
+   Implementation Builder (creates code + unit tests)
    ↓
-Step 5: Quality Assurance - Unit Testing
+Step 5: Quality Assurance - Functional Testing
    ↓
-   Quality Tester (creates unit test designs and executable tests)
+   Quality Tester (creates end-to-end and functional tests)
    ↓
 Step 6: Review & Compliance
    ↓
@@ -157,23 +157,38 @@ All Phases: Continuous Validation
 - Creating task DAGs (directed acyclic graphs)
 - Planning sprints and milestone delivery
 - Identifying dependencies between tasks
+- Planning unit tests alongside implementation
 
 **What it does:**
 - Reads technical specifications (SPEC-* IDs)
 - Creates detailed implementation plans with task breakdowns
 - Generates task DAGs showing dependencies
+- **Plans unit tests as part of each implementation task** (not separate)
+- **Plans functional/end-to-end test scenarios** for Quality Tester to execute
 - Assigns effort estimates and sequencing
 - Maps tasks to TASK-* IDs
 - Identifies frontend/backend/testing/documentation tasks
+- Includes unit test framework references (Jest, pytest, JUnit, etc.)
+- Documents unit test coverage targets (80%+ for business logic, 90%+ for validation)
+
+**Unit Test Planning Includes:**
+- **Backend unit tests** for each service, controller, model, middleware
+- **Frontend unit tests** for each component, hook, service, utility
+- **Test framework** selection and configuration
+- **Mock data** and fixture strategies
+- **Coverage targets** and verification commands
+- **Integration test** dependencies on backend contract verification
 
 **Reads from:**
 - Specifications with SPEC-* IDs
 - `.github/instructions/frontend-standards.md`
 - `.github/instructions/backend-standards.md`
-- `.github/instructions/testing-standards.md`
+- `.github/instructions/testing-standards.md` (unit test patterns and examples)
 
 **Output:**
 - `requirement/{ProjectName}_Plan.md` with TASK-* IDs
+- `plan.md/tasks.md` including unit test tasks (BLOCKED_BY implementation tasks)
+- `plan.md` Functional Test Scenarios section (for Quality Tester)
 - Task dependency graph
 - Updated `requirement/Traceability_Matrix.md`
 
@@ -181,7 +196,7 @@ All Phases: Continuous Validation
 
 ---
 
-### Phase 4: Implementation
+### Phase 4: Implementation & Unit Testing
 
 #### **Implementation Builder**
 **File:** `implement.agent.md`
@@ -191,90 +206,95 @@ All Phases: Continuous Validation
 - Starting a specific task from the task file
 - Creating features, components, or backend services
 - Following established standards and patterns
+- Creating unit tests alongside implementation (test-driven development)
 
 **What it does:**
 - Reads implementation plans (TASK-* IDs)
 - Generates production-ready code
+- **Creates unit tests as part of implementation** (not separately)
 - Follows tech-stack-specific standards
 - Reuses approved components and libraries
-- Creates unit tests as part of implementation
 - Documents code inline with standards
+
+**Unit Test Implementation:**
+- **Frontend unit tests** for components, hooks, services, state management
+- **Backend unit tests** for services, controllers, models, middleware
+- **Test frameworks** (Jest, Vitest, pytest, JUnit, etc.)
+- **Mock data** and fixtures for isolated testing
+- **Coverage targets** (80%+ for business logic, 90%+ for validation)
+- **Verification commands** documented in task description
+
+**Frontend Unit Tests Created:**
+- Component render and event tests
+- Hook tests with state and side effects
+- Service/API client tests with mocking
+- Form validation tests
+- Navigation/routing tests
+- State management tests (reducers, selectors)
+
+**Backend Unit Tests Created:**
+- Service/business logic tests
+- Controller/API endpoint tests
+- Model/ORM tests
+- Middleware tests (auth, validation)
+- Integration tests (database, external services)
 
 **Reads from:**
 - Plans with TASK-* IDs
 - `.github/instructions/frontend-standards.md`
 - `.github/instructions/backend-standards.md`
-- `.github/instructions/general-standards.md`
+- `.github/instructions/testing-standards.md` (unit test patterns and examples)
+- `.github/agents/planner.agent.md` for unit test coverage targets
 
 **Output:**
 - Implemented source code files
-- Unit tests
+- Unit test files (backend and frontend)
 - Code comments and documentation
-- Updated `requirement/Traceability_Matrix.md` (CODE-* IDs)
+- Unit test coverage reports
+- Updated `requirement/Traceability_Matrix.md` (CODE-* and TEST-* IDs)
 
 **User-invocable:** Yes ✅
 
 ---
 
-### Phase 5: Quality Assurance - Unit Testing
+### Phase 5: Quality Assurance - Functional Testing
 
 #### **Quality Tester**
 **File:** `tester.agent.md`
 
 **When to use:**
-- Creating unit test designs and test strategies
-- Writing executable unit test cases
-- Planning test coverage for frontend and backend
-- Creating integration and end-to-end test suites
-- Validating test coverage metrics
+- Creating end-to-end and functional test scenarios after implementation is complete
+- Testing complete user workflows spanning frontend, backend, and database
+- Validating business logic completeness and user experience
+- Creating BDD/Gherkin-style test scenarios
 
 **What it does:**
-- Reads technical specifications and implementation code
-- Designs unit test cases covering all scenarios and edge cases
-- Creates executable unit tests for frontend and backend
-- Plans test data, fixtures, and mock strategies
-- Generates test coverage reports and analysis
-- Maps tests to TEST-* IDs
-- Ensures tests follow tech-stack-specific patterns
+- Reads technical specifications and functional requirements
+- Creates end-to-end test scenarios for user workflows
+- Plans functional test cases covering happy paths, error scenarios, edge cases
+- Maps tests to SPEC-* requirements and acceptance criteria
+- Focuses on **user-facing behavior**, not isolated components
+- **Note:** Unit tests are created during implementation (planning and implementation phases), not here
 
-**Unit Testing Focuses:**
-
-**Frontend Unit Testing:**
-- Component/widget unit tests (React, Vue, Flutter, etc.)
-- State management tests (reducers, stores, providers)
-- Utility and helper function tests
-- Hook tests (React, Vue composition)
-- Validation and form logic tests
-- Navigation/routing tests
-- API client/service tests
-- Theme and styling verification tests
-- Accessibility compliance tests
-
-**Backend Unit Testing:**
-- API endpoint/controller tests
-- Service/business logic tests
-- Database model and ORM tests
-- Middleware tests
-- Authentication/authorization tests
-- Validation and error handling tests
-- Utility and helper function tests
-- Integration tests (database, external services)
-- Error scenario and edge case tests
-- Performance and load tests (if applicable)
+**Tests user workflows like:**
+- Complete user journeys (login → search → filter → select → checkout)
+- Error handling (invalid inputs, API failures, network errors)
+- State transitions and workflow progression
+- Data integrity (create-read-update-delete operations)
+- Cross-layer flows (UI → API → Backend → Database)
+- Performance and accessibility
 
 **Reads from:**
 - Specifications with SPEC-* IDs
-- Implementation code with CODE-* IDs
-- `.github/instructions/testing-standards.md`
+- `plan.md` Functional Test Scenarios section
 - `.github/instructions/frontend-standards.md`
 - `.github/instructions/backend-standards.md`
 
 **Output:**
-- Frontend test files (Jest, Vitest, Flutter test, etc.)
-- Backend test files (pytest, Jest, JUnit, etc.)
-- Test coverage reports
-- Test case documentation
-- Updated `requirement/Traceability_Matrix.md` (TEST-* IDs)
+- Functional test scenarios (BDD/Gherkin format)
+- End-to-end test cases
+- Test execution reports
+- Updated `requirement/Traceability_Matrix.md` with functional test references
 
 **User-invocable:** Yes ✅
 
@@ -495,31 +515,28 @@ Each phase generates unique trace IDs for linking:
 
 ---
 
-## Unit Testing Guidelines
+## Unit Testing & Quality Assurance Separation
 
-The **Quality Tester** agent creates comprehensive unit tests for both frontend and backend. Follow these guidelines:
+### Unit Testing (Planning + Implementation Phases)
 
-### Frontend Unit Testing
+**When**: Planned during Implementation Planner phase, created during Implementation Builder phase
 
-**Test Coverage Areas:**
-- **Component Tests**: Render, props, state changes, user interactions
-- **Hook Tests**: Custom hooks, state management hooks
-- **State Management**: Redux actions/reducers, Vuex, Provider patterns
-- **API Integration**: Mock API calls, error handling
-- **Validation**: Form validation, input sanitization
-- **Navigation**: Router behavior, route transitions
-- **Utilities**: Helper functions, formatters, validators
-- **Accessibility**: ARIA attributes, keyboard navigation
-- **Styling**: Theme application, responsive behavior
+**Who**: Implementation Builder creates unit tests as part of implementation
 
-**Tool Examples:**
-- Jest (React, Vue)
-- Vitest (Vue, Vite)
-- React Testing Library (React)
-- Vue Test Utils (Vue)
-- Flutter test (Flutter)
+**What**: Isolated component/module testing
+- Frontend: Components, hooks, services, utilities, state management
+- Backend: Services, controllers, models, middleware
+- Coverage targets: 80%+ for business logic, 90%+ for validation
+
+**How**: Created during implementation using tech-stack-specific frameworks
+- Frontend: Jest, Vitest, React Testing Library, Flutter test
+- Backend: pytest, Jest, JUnit, unittest
+
+**Why**: Unit tests verify implementation correctness and enable safe refactoring
 
 **Test Structure:**
+
+Frontend:
 ```
 frontend/test/unit/
 ├── components/          # Component unit tests
@@ -530,27 +547,7 @@ frontend/test/unit/
 └── __mocks__/          # Mock data and fixtures
 ```
 
-### Backend Unit Testing
-
-**Test Coverage Areas:**
-- **API Endpoints**: Request/response validation, status codes
-- **Controllers**: Request handling, response formatting
-- **Services**: Business logic, calculations, transformations
-- **Middleware**: Auth, validation, error handling
-- **Database**: Model tests, ORM interactions (using test DB)
-- **Authentication**: Login, token validation, authorization
-- **Validation**: Input sanitization, schema validation
-- **Error Handling**: Exception handling, error messages
-- **Performance**: Query optimization, timeout handling
-- **Integration**: Database, external service interactions
-
-**Tool Examples:**
-- Jest (Node.js)
-- pytest (Python)
-- JUnit (Java)
-- Go testing (Go)
-
-**Test Structure:**
+Backend:
 ```
 backend/test/unit/
 ├── controllers/        # API endpoint tests
@@ -560,6 +557,42 @@ backend/test/unit/
 ├── utils/             # Utility function tests
 └── fixtures/          # Test data and mocks
 ```
+
+---
+
+### Functional Testing (Quality Assurance Phase)
+
+**When**: After implementation is complete
+
+**Who**: Quality Tester creates functional/end-to-end tests
+
+**What**: Complete user workflow testing
+- User journeys (login → search → select → checkout)
+- Error scenarios and edge cases
+- Cross-layer flows (UI → API → Backend → Database)
+- Performance and accessibility
+- End-to-end BDD/Gherkin-style scenarios
+
+**How**: Created using BDD frameworks or end-to-end test tools
+- BDD: Gherkin syntax for readable test scenarios
+- E2E: Playwright, Cypress, or similar tools
+- Manual testing when appropriate
+
+**Why**: Functional tests verify complete system behavior and user experience
+
+---
+
+### Coverage Targets
+
+| Layer | Target | Priority | Who Creates |
+|-------|--------|----------|-------------|
+| Business Logic Unit Tests | 80%+ | CRITICAL | Implementation Builder |
+| Validation Unit Tests | 90%+ | CRITICAL | Implementation Builder |
+| API Endpoint Tests | 75%+ | HIGH | Implementation Builder |
+| UI Component Tests | 70%+ | HIGH | Implementation Builder |
+| Error Handling Tests | 80%+ | HIGH | Implementation Builder |
+| User Workflow Tests | 100% coverage | CRITICAL | Quality Tester (functional) |
+| Edge Case Tests | 80%+ coverage | HIGH | Quality Tester (functional) |
 
 ---
 
@@ -573,17 +606,19 @@ backend/test/unit/
    ↓
 3. Requirements → Technical Specifier
    ↓
-4. Spec → Implementation Planner
+4. Spec → Implementation Planner (plans implementation + unit tests + functional tests)
    ↓
-5. Plan → Implementation Builder (includes unit test implementation)
+5. Plan → Implementation Builder (creates code + unit tests)
    ↓
-6. Code + Unit Tests → Quality Tester (design additional tests)
+6. Code → Compliance Reviewer (validates quality and coverage)
    ↓
-7. Tests + Code → Compliance Reviewer
+7. Implementation → Quality Tester (creates functional/end-to-end tests)
    ↓
-8. Review → Technical Documenter
+8. Tests + Code → Compliance Reviewer (final validation)
    ↓
-9. All artifacts → Traceability Manager (validate)
+9. All artifacts → Technical Documenter
+   ↓
+10. All → Traceability Manager (validate end-to-end)
 ```
 
 ### Existing Project
@@ -592,17 +627,24 @@ backend/test/unit/
    ↓
 2. Requirement input → Technical Specifier
    ↓
-3-9. Same as New Project
+3-10. Same as New Project
 ```
 
 ### Continuous Updates
 ```
 • Code changes → Context Updater (automatic trigger)
 • New requirement → Technical Specifier
-• Specification change → Implementation Planner (re-plan)
-• Implementation → Quality Tester (update tests)
+• Specification change → Implementation Planner (re-plan including unit tests)
+• Implementation → Includes unit tests (planned + created together)
+• Quality Tester → Functional tests after implementation complete
 • Traceability Manager (runs between phases)
 ```
+
+### Key Principles
+1. **Unit Tests with Implementation**: Created during implementation phase, not after
+2. **Functional Tests Separate**: Quality Tester creates end-to-end tests after implementation
+3. **Planning Includes Testing**: Planner defines unit test strategy alongside implementation tasks
+4. **Test Coverage Target**: 80%+ for business logic, 90%+ for validation (set in planning, achieved during implementation)
 
 ---
 
