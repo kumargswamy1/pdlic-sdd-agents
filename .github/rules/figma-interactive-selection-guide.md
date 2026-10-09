@@ -26,8 +26,8 @@ description: Interactive workflow for user-guided Figma node selection when auto
 **Command:**
 ```bash
 python3 scripts/figma_requirements_pipeline.py \
-  --requirements-file requirement/NexusBank_W-17122_Requirements.md \
-  --out-dir output/ICTEST-17122_20260609/specify/figma \
+  --requirements-file requirement/{ProjectName}_Requirements.md \
+  --out-dir output/{RUN_ID}/specify/figma \
   --depth 2 \
   --metadata-only
 ```
@@ -60,7 +60,7 @@ python3 scripts/figma_requirements_pipeline.py \
 ```
 📋 EFFECTIVE CHILD NODES - SELECT ONES TO EXTRACT:
 
-Based on requirement ICTEST-17122: "Update Recommendation Status", AI suggests:
+Based on requirement: "Feature requirement description", AI suggests:
 
 Requirement mentions:
 - Status workflow & visual progression
@@ -91,8 +91,8 @@ AI Pre-selected: ✅ (checked)
 **Command (after user confirms):**
 ```bash
 python3 scripts/figma_requirements_pipeline.py \
-  --requirements-file requirement/NexusBank_W-17122_Requirements.md \
-  --out-dir output/ICTEST-17122_20260609/specify/figma \
+  --requirements-file requirement/{ProjectName}_Requirements.md \
+  --out-dir output/{RUN_ID}/specify/figma \
   --depth 4 \
   --download-screenshots \
   --node-ids "2555:1044189,2555:1044190,2555:1044191,2555:1044195"
@@ -175,9 +175,9 @@ Proceeding to Spec writing..."
 
 ---
 
-## Checklist for Banking Compliance
+## Checklist for Quality Assurance
 
-When using interactive mode for NexusBank:
+When using interactive mode:
 
 - ✅ **Audit trail**: Chat history shows what was selected
 - ✅ **Traceability**: Selection linked to requirement and specification
@@ -211,33 +211,33 @@ When using interactive mode for NexusBank:
 
 ---
 
-## Example: Full ICTEST-17122 Workflow
+## Example: Full Workflow
 
 **Step 1: Get metadata**
 ```bash
 python3 scripts/figma_requirements_pipeline.py \
-  --requirements-file requirement/NexusBank_W-17122_Requirements.md \
-  --out-dir output/ICTEST-17122_20260609/specify/figma \
+  --requirements-file requirement/{ProjectName}_Requirements.md \
+  --out-dir output/{RUN_ID}/specify/figma \
   --metadata-only
 ```
 
 **Output in chat:**
-- 15 effective nodes listed
-- AI suggests 4 based on requirement
+- List of effective nodes
+- AI suggests relevant ones based on requirement
 - User confirms selection
 
 **Step 2: Download selected**
 ```bash
 python3 scripts/figma_requirements_pipeline.py \
-  --requirements-file requirement/NexusBank_W-17122_Requirements.md \
-  --out-dir output/ICTEST-17122_20260609/specify/figma \
+  --requirements-file requirement/{ProjectName}_Requirements.md \
+  --out-dir output/{RUN_ID}/specify/figma \
   --depth 4 \
   --download-screenshots \
   --node-ids "2555:1044189,2555:1044190,2555:1044191,2555:1044195"
 ```
 
 **Output:**
-- 4 JSON files (components, layout, states)
+- Node JSON files (components, layout, states)
 - 4 PNG files (visual evidence)
 - Ready for Spec Agent
 

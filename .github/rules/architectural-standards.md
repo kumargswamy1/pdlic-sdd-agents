@@ -1,7 +1,7 @@
-# Architectural Standards - NexusBank App (Flutter Frontend)
+# Architectural Standards
 
 ## Purpose
-These standards define the required architecture for the Flutter frontend in this NexusBank banking application. They are mandatory unless the plan explicitly documents and approves an exception.
+These standards define the required architecture for applications using this spec-driven PDLC workflow. They are mandatory unless the plan explicitly documents and approves an exception.
 
 ## Architectural Principles
 - Build from approved requirements and specifications only.
@@ -9,11 +9,11 @@ These standards define the required architecture for the Flutter frontend in thi
 - Prefer simple, explicit boundaries over implicit coupling.
 - Keep regulated workflows auditable, deterministic, and secure.
 
-## Flutter Application Architecture
-- Use feature-oriented screen folders under `frontend/lib/screens/` and reusable UI under `frontend/lib/widgets/`.
-- Keep cross-cutting concerns in `frontend/lib/core/` and dedicated services, not duplicated in widgets.
-- Keep widgets focused on view composition and interaction; move business and integration logic to services or Provider state.
-- Use explicit Dart types and sound null safety; avoid hidden global dependencies and unchecked casts.
+## Application Architecture
+- Use feature-oriented folder structures and reusable UI components.
+- Keep cross-cutting concerns in core services, not duplicated across features.
+- Keep presentation logic focused on view composition and interaction; move business and integration logic to services or state management.
+- Use explicit types and sound null safety; avoid hidden global dependencies and unchecked casts.
 
 ## Layering and Dependency Direction
 - Widgets may depend on feature services, shared widgets, and Flutter/platform libraries.
@@ -68,11 +68,11 @@ Use stable domain-prefixed error codes:
 - Enforce accessibility: semantic structure, keyboard support, focus management, and contrast compliance.
 
 ## Domain Areas
-Common NexusBank app domains:
-- Customer profile.
-- KYC and AML status.
-- Risk profile and suitability.
-- Product catalogue.
+Common application domains:
+- User profile and identity.
+- User preferences and settings.
+- Core feature workflows.
+- Integration points with external systems.
 - Portfolio and holdings.
 - Watchlist.
 - Advisory recommendations.

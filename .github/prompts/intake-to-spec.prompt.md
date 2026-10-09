@@ -1,5 +1,5 @@
 ---
-description: "Consolidate existing NexusBank app requirement docs and generate a technical spec."
+description: "Consolidate existing requirement docs and generate a technical spec."
 ---
 
 # Intake To Spec Workflow
@@ -8,7 +8,7 @@ Use this prompt when the user provides a source requirement folder and project n
 
 Arguments expected from the user:
 - Source folder, for example `requirement/legacy/`
-- Project name, for example `NexusBank_g`
+- Project name, for example `MyApp_v1`
 - Optional GitHub issue URL or number
 
 Run this workflow:

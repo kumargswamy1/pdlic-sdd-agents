@@ -1,5 +1,5 @@
 ---
-description: Defines canonical requirement structure and quality criteria for the NexusBank app spec-driven workflow.
+description: Defines canonical requirement structure and quality criteria for spec-driven workflows.
 ---
 
 # Requirement Standards
@@ -31,13 +31,12 @@ Must include GitHub issue, run ID, branch, source commit, upstream artifact, ups
 - Relationship to existing system.
 
 ### 2. Actors & Personas
-Examples for NexusBank app:
-- Retail Customer
-- Relationship Manager
-- Investment Advisor
-- Branch Officer
-- Operations User
-- Compliance Officer
+Examples:
+- End User / Customer
+- Administrator
+- Support Agent
+- Manager / Supervisor
+- System Integrator
 - System Admin
 
 ### 3. User Stories

@@ -1,8 +1,8 @@
 ---
-description: SDLC rules for the NexusBank app spec-driven workflow.
+description: PDLC rules for spec-driven workflows.
 ---
 
-# SDLC Standards
+# PDLC Standards
 
 ## Flow
 

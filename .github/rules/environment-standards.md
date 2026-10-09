@@ -1,4 +1,4 @@
-# Environment Standards - NexusBank App
+# Environment Standards
 
 ## Configuration
 - Use environment variables for runtime configuration.

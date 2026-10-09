@@ -1,5 +1,5 @@
 ---
-description: Defines end-to-end traceability for GitHub Copilot spec-driven SDLC artifacts.
+description: Defines end-to-end traceability for GitHub Copilot spec-driven PDLC artifacts.
 ---
 
 # Traceability Standards

@@ -1,4 +1,4 @@
-# MCP Usage Guide - NexusBank App
+# MCP Usage Guide
 
 ## Purpose
 Use MCP tools only when configured and relevant to the project.

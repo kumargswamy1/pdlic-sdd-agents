@@ -1,5 +1,5 @@
 ---
-description: "Run the full NexusBank app spec-driven workflow from existing docs to implementation."
+description: "Run the full spec-driven workflow from existing docs to implementation."
 ---
 
 # Intake To Implementation Workflow

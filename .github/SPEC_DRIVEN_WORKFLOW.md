@@ -1,4 +1,4 @@
-# Spec-Driven Workflow - NexusBank App
+# Spec-Driven Workflow
 
 ## Existing Documents Flow
 

@@ -14,7 +14,7 @@ How to use:
 - Be specific about domain and output.
 
 Good example:
-`description: "Use when: generating technical specifications from canonical NexusBank app requirements."`
+`description: "Use when: generating technical specifications from canonical project requirements."`
 
 ## 2. name
 What it is:
@@ -170,13 +170,62 @@ model: "GPT-5 (copilot)"
 ---
 ```
 
+## Real-World Examples From Current Codebase
+
+### Example 1: Technical Specifier Agent
+```yaml
+---
+description: "Use when: generating technical specifications from canonical project requirements."
+name: "Technical Specifier"
+tools: [read, search, execute, edit]
+user-invocable: true
+argument-hint: "Enter Jira key (e.g., ABCAPP-123), requirement file path, or press Enter for active file."
+agents: ["Compliance Reviewer", "Traceability Manager"]
+---
+```
+
+### Example 2: Implementation Builder Agent
+```yaml
+---
+description: "Use when: implementing code from approved plans and task files."
+name: "Implementation Builder"
+tools: [read, search, execute, edit]
+user-invocable: true
+agents: ["Compliance Reviewer", "Quality Tester", "Traceability Manager"]
+---
+```
+
+### Example 3: Context Creator Agent
+```yaml
+---
+description: "Use when: creating comprehensive project context with business, technical, and standards documentation from scratch by extracting from source code and applying standards during creation."
+name: "Context Creator"
+tools: [read, search, execute, edit]
+user-invocable: true
+---
+```
+
+### Example 4: Internal Orchestration Agent (Hidden)
+```yaml
+---
+description: "Internal: Orchestrates GitHub backlog workflows including triage, discovery, sprint planning."
+name: "GitHub Backlog Manager"
+tools: [read, search, execute, edit]
+user-invocable: false
+agents: ["Researcher Subagent", "Plan Validator"]
+disable-model-invocation: false
+---
+```
+
 ## Best-Practice Checklist
 
 1. Make `description` precise enough to route correctly.
 2. Keep `tools` minimal and role-specific.
 3. Use exact MCP server keys from `.vscode/mcp.json`.
 4. Use `user-invocable: false` for internal orchestration agents.
-5. Add `argument-hint` for consistent user input.
-6. Use `agents` allowlist if delegation must be controlled.
+5. Add `argument-hint` for consistent user input (especially for agents expecting file paths or IDs).
+6. Use `agents` allowlist if delegation must be controlled (e.g., spec agents should delegate to Compliance Reviewer).
 7. Add hooks only for deterministic and quick checks.
 8. Test one real invocation after each frontmatter change.
+9. Reference actual agents in your `agents` allowlist (e.g., "Technical Specifier", "Compliance Reviewer").
+10. For spec-driven workflows, chain: Specifier → Compliance Reviewer → Planner → Builder → Tester → Documenter.

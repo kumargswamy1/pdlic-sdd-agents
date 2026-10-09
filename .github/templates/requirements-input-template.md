@@ -19,7 +19,7 @@
 Describe the feature, journey, or product change.
 
 ### Business Context
-Explain the NexusBank problem, user impact, operational impact, and business value.
+Explain the problem, user impact, operational impact, and business value.
 
 ### Relationship to Existing System
 State whether this is a new feature, enhancement, integration, migration, or replacement.
@@ -28,9 +28,9 @@ State whether this is a new feature, enhancement, integration, migration, or rep
 
 | Actor | Role | Access Level | Key Goals |
 |-------|------|--------------|-----------|
-| Customer | NexusBank customer | CUSTOMER | View accounts and take action |
-| Relationship Manager | Bank staff | RM | Serve assigned customers |
-| Compliance Officer | Control function | COMPLIANCE | Review regulated activity |
+| End User | Primary user | USER | Accomplish key tasks |
+| Administrator | System admin | ADMIN | Manage system operations |
+| Support Agent | Support staff | SUPPORT | Assist users |
 
 ## 3. User Stories
 

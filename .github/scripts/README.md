@@ -15,8 +15,8 @@
 **Usage:**
 ```bash
 python3 .github/scripts/figma_requirements_pipeline.py \
-  --requirements-file requirement/NexusBank_W-17152_Requirements.md \
-  --out-dir output/ICTEST-17152_20260609/specify/figma \
+  --requirements-file requirement/{ProjectName}_Requirements.md \
+  --out-dir output/{RUN_ID}/specify/figma \
   --download-screenshots \
   --throttle 1.5 \
   --max-retries 5

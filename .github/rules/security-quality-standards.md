@@ -1,4 +1,4 @@
-# Security & Quality Standards - NexusBank App
+# Security & Quality Standards
 
 ## Security
 - Enforce authentication on protected routes, actions, and frontend integration calls.

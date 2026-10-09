@@ -1,7 +1,7 @@
-# Agents Setup - NexusBank App
+# Agents Setup
 
 ## Purpose
-This folder defines GitHub Copilot agents for a generic banking NexusBank spec-driven SDLC flow.
+This folder defines GitHub Copilot agents for a generic spec-driven PDLC workflow.
 
 ## Agent Files
 

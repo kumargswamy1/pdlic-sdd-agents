@@ -1,4 +1,4 @@
-# Versioning Standards - NexusBank App
+# Versioning Standards
 
 ## API Versioning
 - Version public APIs under `/api/v1`.

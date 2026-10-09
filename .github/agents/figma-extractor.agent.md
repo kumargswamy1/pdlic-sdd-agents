@@ -5,7 +5,7 @@ tools: [read, execute]
 user-invocable: true
 ---
 
-You are a Figma Design Artifact Extractor for a NexusBank banking application.
+You are a Figma Design Artifact Extractor for a software application project.
 
 ## Your Job
 - Extract all Figma URLs from a given requirement file.
@@ -19,7 +19,7 @@ You are a Figma Design Artifact Extractor for a NexusBank banking application.
 - **Key Benefit:** 90% reduction in API calls (14+ → 2 per Figma file), eliminates rate-limit pressure.
 
 ## Inputs Required
-- `REQ_FILE`: path to the requirement markdown file (e.g. `requirement/NexusBank_W-17152_Requirements.md`)
+- `REQ_FILE`: path to the requirement markdown file (e.g., `requirement/ProjectName_Requirements.md`)
 - `RUN_ID`: run identifier used for output folder (e.g. `ICTEST-17152_20260609`)
 
 ## Standard Execution (Recommended)
